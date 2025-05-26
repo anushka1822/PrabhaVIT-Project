@@ -1,0 +1,112 @@
+/* FileUpload.css */
+body {
+	background-image: url("/Images/patterns/background.jpg"); /* Path to your image */
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	height: 100vh;
+	margin: 0;
+	background-blend-mode: soft-light;
+}
+
+.upload-container {
+	padding: 30px;
+	background-color: rgba(
+		249,
+		249,
+		249,
+		0.9
+	); /* Semi-transparent background for the container */
+	border-radius: 8px;
+	max-width: 800px;
+	margin: 40px auto;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	background: linear-gradient(135deg, #1976d2, #6b9ce4);
+	color: white;
+}
+
+.upload-heading {
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.file-input {
+	display: block;
+	width: 100%;
+	padding: 12px;
+	border: 2px solid #1976d2;
+	border-radius: 8px;
+	margin-bottom: 20px;
+	background-color: white;
+	color: #1976d2;
+	margin-top: 10px;
+}
+
+.file-info {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.no-file {
+	color: #555;
+	font-size: 16px;
+}
+
+.file-name {
+	font-weight: bold;
+	color: #1976d2;
+}
+
+.upload-actions {
+	text-align: center;
+}
+
+.upload-btn {
+	background-color: #1976d2;
+	color: white;
+	padding: 12px 24px;
+	border: none;
+	border-radius: 25px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.upload-btn:hover {
+	background-color: #1565c0;
+	transform: translateY(-2px);
+}
+
+.upload-btn:disabled {
+	background-color: #90caf9;
+	cursor: not-allowed;
+}
+
+.upload-time {
+	margin-top: 20px;
+	text-align: center;
+	font-size: 14px;
+	color: #fff;
+}
+
+.no-access {
+	text-align: center;
+	font-size: 16px;
+	color: red;
+}
+
+.upload-container {
+	background-color: rgba(
+		0,
+		0,
+		0,
+		0.6
+	); /* Dark overlay on the background for better text visibility */
+}
+
+.theme-select {
+	color: black; /* Set text color to black */
+	/* Add any other styles to match the theme */
+}

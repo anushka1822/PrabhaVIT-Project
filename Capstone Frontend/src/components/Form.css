@@ -1,0 +1,74 @@
+.assignment-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .progress-bar-container {
+    width: 100%;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .progress-bar {
+    height: 8px;
+    background: #4caf50;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.9em;
+  }
+  
+  .submit-btn {
+    padding: 10px 20px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:disabled {
+    background: #ccc;
+  }
+  /* Progress Bar Container */
+.progress-bar-container {
+    width: 100%;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    height: 8px; /* Adjust height as needed */
+  }
+  
+  /* Actual Progress Bar */
+  .progress-bar {
+    height: 100%; /* Fills the container height */
+    background: #4caf50; /* Progress bar color */
+    transition: width 0.3s ease; /* Smooth transition */
+  }
+  

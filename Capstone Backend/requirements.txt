@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+pymongo
+python-dotenv
+passlib
+python-jose[cryptography]
+bcrypt
+pydantic[email]
+openai
+backoff
+google-generativeai
+loguru
+boto3
+python-magic
+python-multipart
+cloudinary
