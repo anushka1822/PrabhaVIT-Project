@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography, Button, Card, CardContent, IconButton, Box
 import { Home, TrendingUp, Groups, MenuBook, Bookmark } from "@mui/icons-material";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import "../styles/profile.css";
+import "../styles/Profile.css";
 
 export default function ProfilePage() {
     const { user_id } = useParams();
