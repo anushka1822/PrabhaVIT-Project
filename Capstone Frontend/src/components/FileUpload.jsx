@@ -17,7 +17,7 @@ const FileUpload = () => {
   const [description, setDescription] = useState('');
 
   const isAdmin = true; // Admin check logic (true for admin, false for user)
-  const backendURL = "http://localhost:8000"
+  const backendURL = "https://prabhavit-project-backend.onrender.com"
 
   useEffect(() => {
     // Fetch courses from the backend

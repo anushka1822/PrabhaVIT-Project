@@ -10,7 +10,7 @@ const CourseFiles = () => {
   const [files, setFiles] = useState([]);
   const [courseName, setCourseName] = useState('');
   const navigate = useNavigate();
-  const backendURL = "http://localhost:8000";
+  const backendURL = "https://prabhavit-project-backend.onrender.com";
 
   useEffect(() => {
     const fetchCourseFiles = async () => {

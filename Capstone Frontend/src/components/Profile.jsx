@@ -34,14 +34,14 @@ export default function ProfilePage() {
         try {
             // Changed: First get user data to get regno
             const userResponse = await axios.get(
-                `http://localhost:8000/api/v1/users/${user_id}`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/users/${user_id}`,
                 { withCredentials: true }
             );
             const regno = userResponse.data.regno;
-            
+
             // Use regno instead of user_id
             const response = await axios.get(
-                `http://localhost:8000/api/v1/users/posts/user/${regno}`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/users/posts/user/${regno}`,
                 { withCredentials: true }
             );
             setUserPosts(response.data);
@@ -62,17 +62,17 @@ export default function ProfilePage() {
     const fetchUserComments = async () => {
         try {
             const userResponse = await axios.get(
-                `http://localhost:8000/api/v1/users/${user_id}`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/users/${user_id}`,
                 { withCredentials: true }
             );
             const regno = userResponse.data.regno;
-            
+
             const response = await axios.get(
-                `http://localhost:8000/api/v1/users/comments/user/${user_id}`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/users/comments/user/${user_id}`,
                 { withCredentials: true }
             );
             console.log("Comments response:", response.data); // Debug log
-            
+
             setUserComments(response.data);
 
             const commentActivity = response.data.map(comment => ({
@@ -100,10 +100,10 @@ export default function ProfilePage() {
     const fetchUserData = async () => {
         setIsLoading(true);
         try {
-            const response = await axios.get(`http://localhost:8000/api/v1/users/${user_id}`, {
+            const response = await axios.get(`https://prabhavit-project-backend.onrender.com/api/v1/users/${user_id}`, {
                 withCredentials: true
             });
-            
+
             setUserData({
                 username: response.data.name || "User",
                 email: response.data.email,
@@ -160,9 +160,9 @@ export default function ProfilePage() {
 
                 {/* Navigation Items */}
                 <List>
-                    <ListItem button selected sx={{ 
+                    <ListItem button selected sx={{
                         background: 'rgba(255,255,255,0.15)',
-                        '&:hover': { 
+                        '&:hover': {
                             background: 'linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%)'
                         }
                     }}>
@@ -172,7 +172,7 @@ export default function ProfilePage() {
 
                     {/* Other navigation items same as Feed */}
                     <ListItem button onClick={() => navigate("/feed")}
-                        sx={{ '&:hover': { background: 'linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)' }}}>
+                        sx={{ '&:hover': { background: 'linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)' } }}>
                         <ListItemIcon sx={{ color: 'white' }}><Home /></ListItemIcon>
                         <ListItemText primary="Home" />
                     </ListItem>
@@ -200,13 +200,13 @@ export default function ProfilePage() {
                         <ListItemText primary="Saved" />
                     </ListItem>
 
-                    <ListItem 
-                        button 
+                    <ListItem
+                        button
                         onClick={() => navigate('/your-clubs')}
-                        sx={{ 
-                            '&:hover': { 
-                                background: 'linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)', 
-                                transition: 'all 0.3s ease' 
+                        sx={{
+                            '&:hover': {
+                                background: 'linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
+                                transition: 'all 0.3s ease'
                             }
                         }}
                     >
@@ -300,7 +300,7 @@ export default function ProfilePage() {
                                     </Box>
                                 </Grid>
                             </Grid>
-                            
+
                             {userData.interests && userData.interests.length > 0 && (
                                 <Box mt={3}>
                                     <Typography variant="subtitle2" sx={{ mb: 1, color: '#666' }}>
@@ -308,10 +308,10 @@ export default function ProfilePage() {
                                     </Typography>
                                     <Box display="flex" gap={1} flexWrap="wrap">
                                         {userData.interests.map((interest, index) => (
-                                            <Chip 
-                                                key={index} 
-                                                label={interest} 
-                                                size="small" 
+                                            <Chip
+                                                key={index}
+                                                label={interest}
+                                                size="small"
                                                 className="interest-chip"
                                             />
                                         ))}
@@ -323,17 +323,17 @@ export default function ProfilePage() {
 
                     {/* Tabs Section */}
                     <Box mt={3}>
-                        <Tabs 
-                            value={tabValue} 
-                            onChange={handleTabChange} 
-                            variant="fullWidth" 
+                        <Tabs
+                            value={tabValue}
+                            onChange={handleTabChange}
+                            variant="fullWidth"
                             className="profile-tabs"
                         >
                             <Tab label="Recent Posts" icon={<PostAdd />} iconPosition="start" />
                             <Tab label="Recent Activity" icon={<History />} iconPosition="start" />
                             <Tab label="About" icon={<AccountCircle />} iconPosition="start" />
                         </Tabs>
-                        
+
                         {/* Tab Content */}
                         <Box mt={2}>
                             {/* Recent Posts Tab */}
@@ -361,7 +361,7 @@ export default function ProfilePage() {
                                     )}
                                 </div>
                             )}
-                            
+
                             {/* Recent Activity Tab */}
                             {tabValue === 1 && (
                                 <div className="tab-content">
@@ -394,7 +394,7 @@ export default function ProfilePage() {
                                     )}
                                 </div>
                             )}
-                            
+
                             {/* About Tab */}
                             {tabValue === 2 && (
                                 <div className="tab-content">

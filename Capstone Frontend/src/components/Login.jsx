@@ -11,7 +11,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:8000/api/v1/users/login", {
+            const response = await axios.post("https://prabhavit-project-backend.onrender.com/api/v1/users/login", {
                 regno: registerNo,
                 password: password,
             },

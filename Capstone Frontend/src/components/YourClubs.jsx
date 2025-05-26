@@ -11,11 +11,11 @@ const YourClubs = () => {
 
     useEffect(() => {
         // Fetch current user info to get the user's id
-        axios.get('http://localhost:8000/api/v1/users/me', { withCredentials: true })
+        axios.get('https://prabhavit-project-backend.onrender.com/api/v1/users/me', { withCredentials: true })
             .then(res => {
                 setUserId(res.data.id);
                 // Fix the API endpoint path
-                axios.get(`http://localhost:8000/api/v1/club-chat/${res.data.id}/clubs`, { withCredentials: true })
+                axios.get(`https://prabhavit-project-backend.onrender.com/api/v1/club-chat/${res.data.id}/clubs`, { withCredentials: true })
                     .then(resp => {
                         console.log("Participated clubs:", resp.data);
                         setParticipatedClubs(resp.data);
@@ -29,7 +29,7 @@ const YourClubs = () => {
             });
 
         // Fix the API endpoint path for all clubs
-        axios.get('http://localhost:8000/api/v1/club-chat/clubs/all', { withCredentials: true })
+        axios.get('https://prabhavit-project-backend.onrender.com/api/v1/club-chat/clubs/all', { withCredentials: true })
             .then(res => {
                 console.log("All clubs:", res.data);
                 setAllClubs(res.data);
@@ -42,9 +42,9 @@ const YourClubs = () => {
     const handleJoinClub = async (clubId) => {
         try {
             await axios.post(
-                `http://localhost:8000/api/v1/club-chat/${clubId}/join`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/club-chat/${clubId}/join`,
                 {
-                    user_id: userId  // Include user_id in request body
+                    user_id: userId
                 },
                 { withCredentials: true }
             );

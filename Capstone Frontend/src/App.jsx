@@ -1,7 +1,7 @@
 import './App.css'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
-import ClubChat from './components/CLubChat'
+import ClubChat from './components/ClubChat'
 import FileView from './components/FileView'
 import Feed from './components/Feed'
 import Form from './components/Form'

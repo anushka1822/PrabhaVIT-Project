@@ -18,7 +18,7 @@ const SignUp = () => {
             return;
         }
         try {
-            const response = await axios.post("http://localhost:8000/api/v1/users/register", {
+            const response = await axios.post("https://prabhavit-project-backend.onrender.com/api/v1/users/register", {
                 name: name,
                 regno: registerNo,
                 email: email,

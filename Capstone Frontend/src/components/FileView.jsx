@@ -13,7 +13,7 @@ const FileView = () => {
   const [selectedCourseId, setSelectedCourseId] = useState(null);
   const [files, setFiles] = useState([]);
 
-  const backendURL = "http://localhost:8000"
+  const backendURL = "https://prabhavit-project-backend.onrender.com"
 
   useEffect(() => {
     // Fetch registered courses from the backend

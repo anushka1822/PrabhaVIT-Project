@@ -5,7 +5,7 @@ import { ThumbUp, Comment, Close, Home, TrendingUp, Groups, AddCircle, Bookmark,
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function PostsWindow(){
+export default function PostsWindow() {
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
     const [currentUserId, setCurrentUserId] = useState(null);
@@ -27,8 +27,8 @@ export default function PostsWindow(){
 
     const fetchCurrentUser = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/api/v1/users/me", { 
-                withCredentials: true 
+            const response = await axios.get("https://prabhavit-project-backend.onrender.com/api/v1/users/me", {
+                withCredentials: true
             });
             setCurrentUserId(response.data.id);
         } catch (error) {
@@ -43,13 +43,13 @@ export default function PostsWindow(){
             // Set token in cookie
             document.cookie = `access_token=${token}; path=/; max-age=3600; samesite=lax;`;
 
-            const response = await axios.get("http://localhost:8000/api/v1/posts/all", { withCredentials: true });
+            const response = await axios.get("https://prabhavit-project-backend.onrender.com/api/v1/posts/all", { withCredentials: true });
             console.log("Token being sent:", token);
             const postsWithComments = await Promise.all(
                 response.data.map(async (post) => {
                     console.log(post)
                     const commentsResponse = await axios.get(
-                        `http://localhost:8000/api/v1/posts/comments/${post.id}`, { withCredentials: true }
+                        `https://prabhavit-project-backend.onrender.com/api/v1/posts/comments/${post.id}`, { withCredentials: true }
                     );
                     return { ...post, comments: commentsResponse.data };
                 })
@@ -66,7 +66,7 @@ export default function PostsWindow(){
     const addPost = async () => {
         try {
             const token = document.cookie.split('access_token=')[1]?.split(';')[0];
-            await axios.post("http://localhost:8000/api/v1/posts/create",
+            await axios.post("https://prabhavit-project-backend.onrender.com/api/v1/posts/create",
                 newPost,
                 {
                     headers: {
@@ -88,7 +88,7 @@ export default function PostsWindow(){
     const addComment = async (postId) => {
         try {
             const token = document.cookie.split('access_token=')[1]?.split(';')[0];
-            await axios.post("http://localhost:8000/api/v1/comment/create",
+            await axios.post("https://prabhavit-project-backend.onrender.com/api/v1/comment/create",
                 {
                     post_id: postId,
                     content: newComment
@@ -112,7 +112,7 @@ export default function PostsWindow(){
     const deletePost = async (postId) => {
         try {
             const token = document.cookie.split('access_token=')[1]?.split(';')[0];
-            await axios.get(`http://localhost:8000/api/v1/posts/delete/${postId}`, {
+            await axios.get(`https://prabhavit-project-backend.onrender.com/api/v1/posts/delete/${postId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
@@ -129,7 +129,7 @@ export default function PostsWindow(){
     const deleteComment = async (postId, commentId) => {
         try {
             const token = document.cookie.split('access_token=')[1]?.split(';')[0];
-            await axios.get(`http://localhost:8000/api/v1/comment/delete/${commentId}`, {
+            await axios.get(`https://prabhavit-project-backend.onrender.com/api/v1/comment/delete/${commentId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
@@ -179,8 +179,8 @@ export default function PostsWindow(){
                 {/* Navigation Items */}
                 <List>
                     {/* These are the list items at the left side of the page. */}
-                    <ListItem 
-                        button 
+                    <ListItem
+                        button
                         onClick={() => currentUserId && navigate(`/profile/${currentUserId}`)}
                         sx={{
                             '&:hover': {

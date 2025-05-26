@@ -66,7 +66,7 @@ const ClubChat = () => {
 
     const fetchUserInfo = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/api/v1/users/me",
+            const response = await axios.get("https://prabhavit-project-backend.onrender.com/api/v1/users/me",
                 { withCredentials: true }
             );
             setUserId(response.data.id);
@@ -80,7 +80,7 @@ const ClubChat = () => {
     const fetchClubDetails = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:8000/api/v1/club-chat/${clubId}/details`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/club-chat/${clubId}/details`,
                 { withCredentials: true }
             );
             // Use the already fetched userId to set admin status
@@ -96,7 +96,7 @@ const ClubChat = () => {
         try {
             setLoading(true);
             const response = await axios.get(
-                `http://localhost:8000/api/v1/club-chat/${clubId}/posts`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/club-chat/${clubId}/posts`,
                 { withCredentials: true }
             );
             setPosts(Array.isArray(response.data) ? response.data : []);
@@ -110,7 +110,7 @@ const ClubChat = () => {
     const fetchPendingRequests = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:8000/api/v1/club-chat/${clubId}/pending`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/club-chat/${clubId}/pending`,
                 { withCredentials: true }
             );
             setPendingRequests(response.data || []);
@@ -122,7 +122,7 @@ const ClubChat = () => {
     const fetchParticipants = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:8000/api/v1/club-chat/${clubId}/participants`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/club-chat/${clubId}/participants`,
                 { withCredentials: true }
             );
             setParticipants(Array.isArray(response.data) ? response.data : []);
@@ -134,7 +134,7 @@ const ClubChat = () => {
     const fetchClubAdmins = async () => { // <<-- updated function with debugging
         try {
             const response = await axios.get(
-                `http://localhost:8000/api/v1/club-chat/${clubId}/details`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/club-chat/${clubId}/details`,
                 { withCredentials: true }
             );
             console.log("Club details:", response.data); // Debug: log complete details
@@ -146,7 +146,7 @@ const ClubChat = () => {
             }
             // Assuming an endpoint like GET /users/<adminId> returns user info with property 'name'
             const adminRequests = adminIds.map((adminId) =>
-                axios.get(`http://localhost:8000/api/v1/users/${adminId}`, { withCredentials: true })
+                axios.get(`https://prabhavit-project-backend.onrender.com/api/v1/users/${adminId}`, { withCredentials: true })
             );
             const adminResponses = await Promise.all(adminRequests);
             const adminNames = adminResponses.map((res) => res.data.name);
@@ -165,7 +165,7 @@ const ClubChat = () => {
             }
 
             await axios.post(
-                `http://localhost:8000/api/v1/club-chat/${clubId}/createpost`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/club-chat/${clubId}/createpost`,
                 newPost,
                 { withCredentials: true }
             );
@@ -181,7 +181,7 @@ const ClubChat = () => {
     const handleRequest = async (userId, action) => {
         try {
             await axios.post(
-                `http://localhost:8000/api/v1/club-chat/${clubId}/${action}`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/club-chat/${clubId}/${action}`,
                 { user_id: userId },
                 { withCredentials: true }
             );
@@ -195,7 +195,7 @@ const ClubChat = () => {
     const makeAdmin = async (userId) => {
         try {
             await axios.post(
-                `http://localhost:8000/api/v1/club-chat/${clubId}/make-admin`,
+                `https://prabhavit-project-backend.onrender.com/api/v1/club-chat/${clubId}/make-admin`,
                 { user_id: userId },
                 { withCredentials: true }
             );
@@ -274,13 +274,13 @@ const ClubChat = () => {
             </Box>
 
             {/* Buttons for Modals (visible for admin) */}
-                    <Button
-                        variant="contained"
-                        onClick={handleOpenAdmins} // <<-- new button
-                        sx={{ background: 'linear-gradient(45deg, #3B82F6, #2563EB)' }}
-                    >
-                        View Club Admins
-                    </Button>
+            <Button
+                variant="contained"
+                onClick={handleOpenAdmins} // <<-- new button
+                sx={{ background: 'linear-gradient(45deg, #3B82F6, #2563EB)' }}
+            >
+                View Club Admins
+            </Button>
             {isAdmin && (
                 <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
                     <Button
